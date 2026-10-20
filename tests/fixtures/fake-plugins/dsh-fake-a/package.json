@@ -1,0 +1,6 @@
+{
+  "name": "@deepwhale-cn/dsh-fake-a",
+  "version": "0.0.0",
+  "private": true,
+  "description": "仅用于 dsh-fix-verify 测试的假规则插件，不发布"
+}

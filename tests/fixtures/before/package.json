@@ -1,0 +1,9 @@
+{
+  "name": "demo-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "改前改后复核演示项目（旧快照）",
+  "scripts": {
+    "start": "node src/app.js"
+  }
+}

@@ -1,0 +1,4 @@
+# @deepwhale-cn/dsh-fix-verify 的组合层
+- insert:
+    - id: fix-verify
+      name: '@deepwhale-cn/dsh-fix-verify'

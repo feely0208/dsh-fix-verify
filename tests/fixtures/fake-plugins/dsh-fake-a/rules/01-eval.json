@@ -1,0 +1,12 @@
+{
+  "id": "FAKE-EVAL",
+  "title": "代码里出现 eval 动态执行",
+  "severity": "high",
+  "source": "测试用假规则（fixtures only），不引用真实法条；用于验证规则源发现与改前改后比对。",
+  "advice": "演示用：把 eval 换成 JSON.parse 或显式的解析逻辑，不要执行不可信输入。这条规则只存在于测试样本里，不随插件发布。",
+  "check": {
+    "type": "file-pattern",
+    "pattern": "\\beval\\s*\\(",
+    "exts": [".js", ".mjs"]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "FAKE-CONSOLE",
+  "title": "代码里留下 console.log",
+  "severity": "low",
+  "source": "测试用假规则（fixtures only），不引用真实法条；用于验证「改后新出现」的回归桶。",
+  "advice": "演示用：发布前清掉调试日志，或改用带级别的日志库。这条规则只存在于测试样本里。",
+  "check": {
+    "type": "file-pattern",
+    "pattern": "console\\.log\\s*\\(",
+    "exts": [".js", ".mjs"]
+  }
+}

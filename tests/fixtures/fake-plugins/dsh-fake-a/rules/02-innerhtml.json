@@ -1,0 +1,12 @@
+{
+  "id": "FAKE-INNERHTML",
+  "title": "把字符串直接写进 innerHTML",
+  "severity": "medium",
+  "source": "测试用假规则（fixtures only），不引用真实法条；用于验证「两边都有」的遗留桶。",
+  "advice": "演示用：改用 textContent 或先做转义，避免把不可信字符串当 HTML 解析。这条规则只存在于测试样本里。",
+  "check": {
+    "type": "file-pattern",
+    "pattern": "\\.innerHTML\\s*=",
+    "exts": [".js", ".mjs"]
+  }
+}
