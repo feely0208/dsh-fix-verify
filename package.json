@@ -34,7 +34,7 @@
     "./package.json": "./package.json"
   },
   "bin": {
-    "dsh-fix-verify": "./bin/cli.mjs"
+    "dsh-fix-verify": "bin/cli.mjs"
   },
   "engines": {
     "dsh": ">=0.1.0-rc.6 <0.3.0",
