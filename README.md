@@ -1,5 +1,7 @@
 # @deepwhale-cn/dsh-fix-verify
 
+[![dshfind 收录](https://dshfind.com/api/badge/feely0208/dsh-fix-verify?lang=zh)](https://dshfind.com/zh/plugins/feely0208/dsh-fix-verify)
+
 [![Listed on dsh-plugin.org](https://dsh-plugin.org/badges/listed.svg)](https://dsh-plugin.org/zh/plugins/feely0208/dsh-fix-verify)
 
 **改之前报的那几条，改完到底还在不在？同一套规则跑两遍，修复 / 遗留 / 新增回归一次说清。**
