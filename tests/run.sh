@@ -41,7 +41,7 @@ J=$(node "$CLI" --before "$BEFORE" --after "$AFTER" --rules-from "$FAKE" --json 
 E1=$?
 echo "$J" | python3 -c "import json,sys;json.load(sys.stdin)" 2>/dev/null \
   && ok "输出是合法 JSON" || { bad "JSON 解析失败"; cat "$TMPBASE/err1" | head -5; }
-[ "$E1" = "1" ] && ok "有遗留/回归时 exit 1（实际 $E1）" || bad "退出码应为 1，实际 $E1"
+[ "$E1" = "1" ] && ok "有遗留/回归时 exit 1（实际 ${E1}）" || bad "退出码应为 1，实际 $E1"
 c=$(echo "$J" | python3 -c "import json,sys;d=json.load(sys.stdin);print(d['summary']['fixed'])")
 [ "$c" = "1" ] && ok "已修复 1 条" || bad "已修复应为 1，实际 ${c:-无}"
 c=$(echo "$J" | python3 -c "import json,sys;d=json.load(sys.stdin);print(d['summary']['remaining'])")
@@ -83,7 +83,7 @@ R=$(echo "$J2" | python3 -c "import json,sys;print(len(json.load(sys.stdin)['rul
 echo ""; echo "  【2】全部修完 → exit 0"
 node "$CLI" --before "$BEFORE" --after "$CLEAN" --rules-from "$FAKE" --quiet >"$TMPBASE/q2" 2>&1
 E2=$?
-[ "$E2" = "0" ] && ok "遗留与回归归零时 exit 0（实际 $E2）" || bad "应为 exit 0，实际 $E2"
+[ "$E2" = "0" ] && ok "遗留与回归归零时 exit 0（实际 ${E2}）" || bad "应为 exit 0，实际 $E2"
 J=$(node "$CLI" --before "$BEFORE" --after "$CLEAN" --rules-from "$FAKE" --json 2>/dev/null)
 R=$(echo "$J" | python3 -c "import json,sys;d=json.load(sys.stdin);print('%d/%d/%d'%(d['summary']['fixed'],d['summary']['remaining'],d['summary']['regressed']))")
 [ "$R" = "2/0/0" ] && ok "修完的快照：修复 2 / 遗留 0 / 回归 0" || bad "修完桶结果错误：${R:-空}"
@@ -98,7 +98,7 @@ grep -q "修复 0 · 遗留 0 · 新增回归 0" "$TMPBASE/q3" \
 echo ""; echo "  【4】规则源为空 → exit 2（绝不假绿）"
 node "$CLI" --before "$BEFORE" --after "$AFTER" --rules-from "$EMPTY" >"$TMPBASE/o4" 2>&1
 E4=$?
-[ "$E4" = "2" ] && ok "规则源为 0 时 exit 2（实际 $E4）" || bad "规则源为 0 应 exit 2，实际 $E4"
+[ "$E4" = "2" ] && ok "规则源为 0 时 exit 2（实际 ${E4}）" || bad "规则源为 0 应 exit 2，实际 $E4"
 grep -q "没有发现任何规则源" "$TMPBASE/o4" \
   && ok "输出明确说明「没有发现任何规则源」" || bad "缺少规则源为空的明确说明"
 grep -q -- "--rules-from" "$TMPBASE/o4" \
@@ -109,7 +109,7 @@ echo ""; echo "  【5】--md 复核报告"
 node "$CLI" --before "$BEFORE" --after "$AFTER" --rules-from "$FAKE" --md "$TMPBASE/report.md" --quiet >/dev/null 2>&1
 [ -s "$TMPBASE/report.md" ] && ok "--md 生成了非空报告" || bad "--md 未生成报告"
 for kw in "改前改后复核报告" "已修复" "遗留" "新增回归" "不构成安全结论" "复核方式"; do
-  grep -q "$kw" "$TMPBASE/report.md" && ok "报告含「$kw」" || bad "报告缺「$kw」"
+  grep -q "$kw" "$TMPBASE/report.md" && ok "报告含「${kw}」" || bad "报告缺「${kw}」"
 done
 
 echo ""; echo "  【6】参数与退出码语义"
